@@ -93,6 +93,36 @@
 				}
 				
 			/**
+			 * Draws a list of PHP objects using a specified list template. Objects
+			 * must have a template of the form object/classname
+			 * @param $items An array of PHP objects
+			 * @return string
+			 */
+				function drawList($items, $style = 'stream') {
+					if (is_array($items) && !empty($items) && !empty($style)) {
+						$t = new BonTemp($this);
+						$t->items = $items;
+						return $t->draw('list/'. $style);
+					}
+					return '';
+				}
+				
+			/**
+			 * Draws a single supplied PHP object. Objects should have a corresponding template
+			 * of the form object/classname
+			 * @param $item PHP object
+			 * @return string
+			 */
+				function drawObject($object) {
+					if (is_object($object)) {
+						$t = new BonTemp($this);
+						$t->object = $object;
+						return $t->draw('object/' . get_class($object));
+					}
+					return '';
+				}
+				
+			/**
 			 * Returns the value of a stored variable
 			 * @param $name The name of the variable
 			 * @return mixed
