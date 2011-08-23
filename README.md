@@ -1,7 +1,26 @@
-Bonita: a simple PHP template engine.
-=====================================
+Bonita: a simple PHP template manager with lofty ambitions.
+===========================================================
 
 Version 0.1: August 22, 2011.
+
+Que?
+----
+
+I've been using the same patterns for a long time, and have rewritten
+them time and time again. So I decided I'd create a single, canonical
+project, and release it under an open source license so others can
+use it and help it grow.
+
+Bonita's templating engine lets you build templates in PHP, and very
+quickly (for example) provide feeds for lists of objects, manage
+POST actions with accompanying action tokens, and so on.
+
+Or at least, it will. This is version 0.1, so tread carefully, and
+understand that it's more of a starting point than something that
+you should consider sticking into your finished product.
+
+This is really designed for PHP-based apps, not sites. Ymmv.
+
 
 Getting started
 ---------------
@@ -21,22 +40,6 @@ Bugs and feature requests
 Bonita uses Github's built-in issue tracker:
 
 <https://github.com/benwerd/bonita/issues>
-
-
-Why is this here?
------------------
-
-I've been using the same patterns for a long time, and have rewritten
-them time and time again. So I decided I'd create a single, canonical
-project, and release it under an open source license so others can
-use it and help it grow.
-
-Bonita's templating engine lets you build templates in PHP, and very
-quickly (for example) provide feeds for lists of objects.
-
-Or at least, it will. This is version 0.1, so tread carefully, and
-understand that it's more of a starting point than something that
-you should consider sticking into your finished product.
 
 
 Copyright and license
