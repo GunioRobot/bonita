@@ -13,9 +13,15 @@
 	
 	*/
 	
-	
-	// Set Bonita base path to the directory this file is in
-		constant BONITA_PATH = dirname(__FILE__);
 		
 	// Load required files
-		require_once(dirname(__FILE__) . '/includes/bonita.class.php');
+		require_once(dirname(__FILE__) . '/includes/classes/bon.class.php');
+		require_once(dirname(__FILE__) . '/includes/classes/bontemp.class.php');
+		
+		
+	// Set Bonita base path to the directory this file is in
+		Bon::$path = dirname(__FILE__);
+		
+	// Check for the existence of a cache file: if it exists, run it
+	// (NB: right now, the cache mechanism is a definite @TODO)
+		if (file_exists(Bon::$path . '/paths.cache.php')) @include_once Bon::$path . '/paths.cache.php';
