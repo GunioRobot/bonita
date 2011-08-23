@@ -23,8 +23,16 @@
 	// we're using
 		if ($_GET['t'] == 'rss') $tmp->setTemplateType('rss');
 		
-	// Page contents
-		$tmp->title = 'Example page';						// Page title
-		$tmp->url = 'https://github.com/benwerd/bonita';	// A link back to git
-		$tmp->body = $tmp->draw('pages/example');			// Page body
-		$tmp->drawPage();									// Draw the page
+	// Page contents:
+	
+	// Page title
+		$tmp->title = 'Example page';
+		
+	// A link back to git
+		$tmp->url = 'https://github.com/benwerd/bonita';
+		
+	// Page body
+		$tmp->body = $tmp->draw('pages/example');
+		
+	// And finally, draw the page
+		$tmp->drawPage();
