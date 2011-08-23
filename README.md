@@ -32,7 +32,11 @@ project, and release it under an open source license so others can
 use it and help it grow.
 
 Bonita's templating engine lets you build templates in PHP, and very
-quickly (for example) provide feeds for 
+quickly (for example) provide feeds for lists of objects.
+
+Or at least, it will. This is version 0.1, so tread carefully, and
+understand that it's more of a starting point than something that
+you should consider sticking into your finished product.
 
 
 Copyright and license
