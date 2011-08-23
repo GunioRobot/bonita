@@ -6,7 +6,7 @@ Version 0.1: August 22, 2011.
 Getting started
 ---------------
 
-Check out git://github.com/benwerd/bonita.git
+Check out <git://github.com/benwerd/bonita.git>
 
 To use in its most basic setting, place the whole Bonita folder into
 your web project and include start.php. 
@@ -20,7 +20,7 @@ Bugs and feature requests
 
 Bonita uses Github's built-in issue tracker:
 
-https://github.com/benwerd/bonita/issues
+<https://github.com/benwerd/bonita/issues>
 
 
 Why is this here?
