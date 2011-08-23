@@ -17,22 +17,22 @@
 		Bon::additionalPath(dirname(__FILE__));
 		
 	// Instantiate template
-		$tmp = new BonTemp();
+		$t = new BonTemp();
 		
 	// For the purposes of this example, some GET line fun to choose which template
 	// we're using
-		if ($_GET['t'] == 'rss') $tmp->setTemplateType('rss');
+		if ($_GET['t'] == 'rss') $t->setTemplateType('rss');
 		
 	// Page contents:
 	
 	// Page title
-		$tmp->title = 'Example page';
+		$t->title = 'Example page';
 		
 	// A link back to git
-		$tmp->url = 'https://github.com/benwerd/bonita';
+		$t->url = 'https://github.com/benwerd/bonita';
 		
 	// Page body
-		$tmp->body = $tmp->draw('pages/example');
+		$t->body = $t->draw('pages/example');
 		
 	// And finally, draw the page
-		$tmp->drawPage();
+		$t->drawPage();

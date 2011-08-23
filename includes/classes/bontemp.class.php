@@ -51,10 +51,11 @@
 				
 			/**
 			 * Method to draw an actual template element
-			 * @param string Name of the template element to draw
-			 * @return string Rendered template element
+			 * @param string $templateName Name of the template element to draw
+			 * @param boolean $returnBlank If true, returns a blank string on failure; otherwise false
+			 * @return string|false Rendered template element or false, depending on $returnBlank
 			 */
-				function draw($templateName) {
+				function draw($templateName, $returnBlank = true) {
 					$templateName = preg_replace('/^_[A-Z0-9\/]+/i','',$templateName);
 					if (!empty($templateName)) {
 					
@@ -89,7 +90,8 @@
 						}
 					}
 					// If we've got here, just return a blank string; the template doesn't exist
-					return '';
+					if ($returnBlank) return '';
+					return false;
 				}
 				
 			/**
@@ -117,21 +119,26 @@
 					if (is_object($object)) {
 						$t = new BonTemp($this);
 						$t->object = $object;
-						return $t->draw('object/' . get_class($object));
+						if (($result = $t->draw('object/' . get_class($object), false)) !== false) return $result;
+						if ($object instanceof BonDrawable) return $t->draw('object/default');
 					}
 					return '';
 				}
 				
 			/**
-			 * Returns the value of a stored variable
-			 * @param $name The name of the variable
-			 * @return mixed
+			 * Takes some text and runs it through the current template's processor.
+			 * This is in the form of a template at processors/text, or processors/X where X
+			 * is a custom processor
+			 * @param $content Some content
+			 * @param $processor Optionally, the processor you want to use (default: text)
+			 * @return string Formatted content (or the input content if the processor doesn't exist)
 			 */
-				function vars($name) {
-					if (isset($this->vars[$name]))
-						return $this->vars[$name];
-					else
-						return false;
+				function process($content, $processor = 'text') {
+					$t = new BonTemp();
+					$t->content = $content;
+					$t->setTemplateType($this->getTemplateType());
+					if (($result = $t->draw('processor/' . $processor, false)) !== false) return $result;
+					return $content;
 				}
 				
 			/**
