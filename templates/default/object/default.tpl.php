@@ -6,7 +6,9 @@
 
 	if ($vars['object'] instanceof BonDrawable) {
 
+
 ?>
+
 <div class="object <?php echo get_class($vars['object']); ?>">
 	<div class="title">
 		<?php echo $t->process($vars['object']->getTitle()); ?>
@@ -15,6 +17,7 @@
 		<?php echo $t->process($vars['object']->getDescription()); ?>
 	</div>
 </div>
+
 <?php
 
 	}
