@@ -24,6 +24,8 @@
 	// Set Bonita base path to the directory this file is in
 		Bon::$path = dirname(__FILE__);
 		
+	// Establish mobile 
+		
 	// Check for the existence of a cache file: if it exists, run it
 	// (NB: right now, the cache mechanism is a definite @TODO)
 		if (file_exists(Bon::$path . '/paths.cache.php')) @include_once Bon::$path . '/paths.cache.php';

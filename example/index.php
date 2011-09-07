@@ -21,7 +21,9 @@
 		
 	// For the purposes of this example, some GET line fun to choose which template
 	// we're using
+		$t->detectTemplateType();
 		if ($_GET['t'] == 'rss') $t->setTemplateType('rss');
+		if ($_GET['t'] == 'ipad') $t->setTemplateType('ipad');
 		
 	// Page contents:
 	
