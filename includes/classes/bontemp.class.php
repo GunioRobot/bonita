@@ -167,6 +167,7 @@
 			 * @param string $template The name of the template you wish to use
 			 */
 				function setTemplateType($templateType) {
+					$templateType = preg_replace('/^_[A-Z0-9\/]+/i','',$templateType);
 					if ($this->templateTypeExists($templateType)) {
 						$this->templateType = $templateType;
 						return true;
@@ -180,6 +181,7 @@
 			 * @return true|false
 			 */				
 				function templateTypeExists($templateType) {
+					$templateType = preg_replace('/^_[A-Z0-9\/]+/i','',$templateType);
 					if (!empty($templateType)) {
 						$paths = Bon::getPaths();
 						foreach($paths as $basepath) {
