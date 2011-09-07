@@ -11,6 +11,8 @@ quickly (for example) provide feeds for lists of objects, manage
 POST actions with accompanying action tokens, create different 
 interfaces for various devices, and so on.
 
+Please get involved! This is an open source project.
+
 
 Getting started
 ---------------
@@ -20,8 +22,9 @@ Check out <git://github.com/benwerd/bonita.git>
 To use in its most basic setting, place the whole Bonita folder into
 your web project and include start.php. 
 
-More sophisticated instructions - e.g. for inclusion in plugin-based
-systems, or for using multiple templates - coming soon.
+See the Wiki for more information:
+
+<https://github.com/benwerd/bonita/wiki>
 
 
 Bugs and feature requests
