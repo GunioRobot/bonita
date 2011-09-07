@@ -14,15 +14,18 @@
 		class BonTemp {
 		
 			public $templateType = 'default';		// Which template are we using?
-			public $vars = array();				// Template variables
+			public $vars = array();					// Template variables
 			
 			/**
 			 * Constructor allows copying; we're shunning use of clone here
+			 * You can also just instantiate BonTemp with a list of variables
 			 */
 				function __construct($initial = false) {
 					if ($initial instanceof BonTemp) {
 						$this->vars = $initial->vars;
 						$this->templateType = $initial->templateType;
+					} else if (is_array($initial)) {
+						$this->vars = $initial;
 					}
 				}
 			
@@ -60,8 +63,7 @@
 					if (!empty($templateName)) {
 					
 						// Add the Bonita base path to our additional paths list
-						$paths = Bon::getAdditionalPaths();
-						$paths[] = Bon::$path;
+						$paths = Bon::getPaths();
 						
 						// Add template types to an array; ensure we revert to default
 						$templateTypes = array($this->getTemplateType());
@@ -165,12 +167,36 @@
 			 * @param string $template The name of the template you wish to use
 			 */
 				function setTemplateType($templateType) {
-					if (!empty($templateType)) {
+					if ($this->templateTypeExists($templateType)) {
 						$this->templateType = $templateType;
 						return true;
-					} else {
-						return false;
 					}
+					return false;
+				}
+
+			/**
+			 * Does the specified template type exist?
+			 * @param string Name of the template type
+			 * @return true|false
+			 */				
+				function templateTypeExists($templateType) {
+					if (!empty($templateType)) {
+						$paths = Bon::getPaths();
+						foreach($paths as $basepath) {
+							$path = $basepath . '/templates/'.$templateType.'/';
+							if (file_exists($path))  return true;
+						}
+					}
+					return false;
+				}
+				
+			/**
+			 * Detects templates based on the given browser string
+			 * (defaults, of course, to "default")
+			 */
+				function detectTemplateType() {
+					$device = Bon::detectDevice();
+					return $this->setTemplateType($device);
 				}
 				
 			/**
