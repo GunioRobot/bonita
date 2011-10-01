@@ -37,3 +37,14 @@
 		
 	// And finally, draw the page
 		$t->drawPage();
+	
+	// Or, we could have done it in one call, this way:	
+	/*
+		$t->__(array(
+		
+			'title' => 'Example page',
+			'url' => 'https://github.com/benwerd/bonita',
+			'body' => $t->draw('pages/example'),
+			
+		))->drawPage();
+	*/

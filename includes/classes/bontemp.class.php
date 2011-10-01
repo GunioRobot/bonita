@@ -53,6 +53,19 @@
 				}
 				
 			/**
+			 * Chainable function to allow variables to be added as an array.
+			 * @param $vars Variables to add to the template (eg array('name1' => 'value1', 'name2' => 'value2'))
+			 * @return BonTemp this template object
+			 */
+				function __($vars) {
+					if (!empty($vars) && is_array($vars)) {
+						foreach($vars as $var => $value)
+							$this->$var = $value;
+					}
+					return $this;
+				}
+				
+			/**
 			 * Method to draw an actual template element
 			 * @param string $templateName Name of the template element to draw
 			 * @param boolean $returnBlank If true, returns a blank string on failure; otherwise false
